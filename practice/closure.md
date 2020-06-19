@@ -4,6 +4,11 @@
 
 ```js
 // Your code goes here
+function multiplyBy(num1) {
+  return function (num2) {
+    return num1 * num2;
+  }
+}
 
 const double = multiplyBy(2);
 const final = double(15); // final should be 30
@@ -13,6 +18,13 @@ const final = double(15); // final should be 30
 
 ```js
 // Your code goes here
+function fullName(firstName) {
+
+  function lastName(lastName) {
+    return firstName + " " + lastName;
+  }
+  return lastName;
+}
 
 const name = fullName("Will");
 const final = name("Smith"); // final should be "Will Smith"
@@ -23,6 +35,11 @@ const final = name("Smith"); // final should be "Will Smith"
 ```js
 function isInBetween(a, b) {
   // your code goes here
+  function giveResult(num) {
+    return num > a && num < b;
+  }
+
+  return giveResult;
 }
 
 const isChild = isInBetween(10, 100);
@@ -36,7 +53,11 @@ isChild(103); // false
 ```js
 function letsWishThem(greeting) {
   // your code goes here
+  return function (text) {
+    return greeting + " " + text;
+  }
 }
+
 
 const callWithHey = letsWishThem("Hey");
 const callWithHello = letsWishThem("Hello");
@@ -48,7 +69,13 @@ callWithHello("How Are You?"); // Hello How Are You?
 
 ```js
 function addGame(gameName) {
+  let count = 0;
   // your code goes here
+  function countScore() {
+    ++count;
+    return `Your score of ${gameName} is ${count}`
+  }
+  return countScore;
 }
 
 // Output
@@ -65,13 +92,24 @@ cricket(); // Your score of Cricket is 2
 ```js
 function getCard(suit) {
   // your code goes here
+  function generateRandomNumber(){
+    // let arrOfCards = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10","J", "Q", "K"];
+    let arrOfCards ="A,2,3,4,5,6,7,8,9,10,J,K,Q".split(",");
+    // console.log(arrOfCards)
+    let index = Math.floor(Math.random() * arrOfCards.length);
+    return `Card is ${arrOfCards[index]} ${suit}`
+
+  }
+  return generateRandomNumber;
+}
+
 }
 
 // Output
-const randomClub = addGame("Club");
+const randomClub = getCard("Club");
 randomClub(); // Card is: 6 Club
 randomClub(); // Card is: A Club
-const randomSpade = addGame("Spade");
+const randomSpade = getCard("Spade");
 randomSpade(); // Card is: 6 Spade
 randomSpade(); // Card is: A Spade
 ```

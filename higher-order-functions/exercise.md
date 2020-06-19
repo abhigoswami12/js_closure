@@ -18,6 +18,20 @@ Have `map` return a new array filled with numbers that are the result of using t
 map([1,2,3,4,5], multiplyByTwo); //-> [2,4,6,8,10]
 multiplyByTwo(1); //-> 2
 multiplyByTwo(2); //-> 4
+
+function map(arr, callback) {
+  let newArr = [];
+  for(i = 0; i < arr.length; i++) {
+    let result = callback(arr[i]);
+    newArr.push(result);
+  }
+  return newArr;
+}
+//my callback function for the problem
+function multiplyByTwo(element, index, array) {
+  return element * 2;
+}
+
 ```
 
 ## Challenge 4
@@ -30,10 +44,17 @@ forEach(letters, function(char) {
   alphabet += char;
 });
 console.log(alphabet);   //prints 'abcd'
+
+function forEach(arr, callback) {
+  for(i = 0; i < arr.length; i++) {
+     callback(arr[i]);
+  }
+}
 ```
 
 ## Extension 1
 In the first part of the extension, you're going to rebuild `map` as `mapWith`. This time you're going to use `forEach` inside of `mapWith` instead of using a for loop.
+
 
 
 ## Extension 2
@@ -57,5 +78,7 @@ Construct a function union that compares input arrays and returns a new array th
 ## Extension 5
 Construct a function `objOfMatches` that accepts two arrays and a callback. `objOfMatches` will build an object and return it. To build the object, `objOfMatches` will test each element of the first array using the callback to see if the output matches the corresponding element (by index) of the second array. If there is a match, the element from the first array becomes a key in an object, and the element from the second array becomes the corresponding value.
 
+
 ## Extension 6
 Construct a function `multiMap` that will accept two arrays: an array of values and an array of callbacks. `multiMap` will return an object whose keys match the elements in the array of values. The corresponding values that are assigned to the keys will be arrays consisting of outputs from the array of callbacks, where the input to each callback is the key.
+
